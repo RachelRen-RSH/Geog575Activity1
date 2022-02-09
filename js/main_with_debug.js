@@ -24,17 +24,15 @@ for (var j = 0; j < 5; j++) {
     // table row creation
     var row = document.createElement("tr");
     tbl.appendChild(row);
-    console.log("eadxqerxq");
 }
 body.appendChild(tbl);
 
 // the function to add the content of the table created before
 function addColumns(cityPop) {
-    console.log("wdef");
 
     // loop for each row to add the content of each cell, when i equals to 0, it means it is the first row and the title of each column
     document.querySelectorAll("tr").forEach(function (row, i) {
-        console.log("zheli");
+
         if (i == 0) {
             row.insertAdjacentHTML('beforeend', '<th>City</th>');
             row.insertAdjacentHTML('beforeend', '<th>Population</th>');
@@ -42,7 +40,7 @@ function addColumns(cityPop) {
         }
         // if it is not the first row, use the array created before to add the content for each cell
         else {
-            console.log("wheircnhwicnrhjwinctjhir");
+
             var citySize;
             // define the level of the size of city based on the population
             if (cityPop[i - 1].population < 100000) {
@@ -54,7 +52,7 @@ function addColumns(cityPop) {
             } else {
                 citySize = 'Large';
             };
-            console.log(citySize);
+
             row.insertAdjacentHTML('beforeend', '<td>' + cityPop[i - 1].city + '</td>');
             row.insertAdjacentHTML('beforeend', '<td>' + cityPop[i - 1].population + '</td>');
             row.insertAdjacentHTML('beforeend', '<td>' + citySize + '</td>');
@@ -66,7 +64,7 @@ function addColumns(cityPop) {
 function addEvents() {
     // declare a function to change the style of the table so that when the mouse touch the table, it changes the style
     document.querySelector("table").addEventListener("mouseover", function () {
-        console.log("qqqqqqqqqqqqqqq");
+
         var color = "rgb(";
         // define the color and use for loop to generate a random color
         for (var i = 0; i < 3; i++) {
