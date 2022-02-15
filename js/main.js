@@ -91,6 +91,30 @@ function addEvents() {
     document.querySelector("table").addEventListener("click", clickme)
 };
 
-// call the two functions to show in the screen and perform 
+// a new div part for showing the Geojson file
+var body = document.getElementsByTagName("body")[0];
+var div = document.createElement("div");
+div.id = "mydiv";
+body.appendChild(div);
+
+//define the callback function
+function callback(response) {
+    console.log(response);
+    // transform the json data into a readable form and load it to the page
+    document.querySelector("#mydiv").insertAdjacentHTML('beforeend', '<br>GeoJSON data: <br>' + JSON.stringify(response))
+};
+
+// get the geojson file and get the response object to the request, then calling the callback function 
+function jsAjax() {
+    fetch("data/MegaCities.geojson")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(callback) // send the data to the callback function
+};
+
+
+// call the functions to show in the screen and perform 
 addEvents();
 window.onload = addColumns(cityPop);
+window.onload = jsAjax();
